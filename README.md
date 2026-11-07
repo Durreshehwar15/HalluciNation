@@ -1,365 +1,309 @@
+<div align="center">
 
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/logo.png" alt="Ticket2fix" width="480" />
 
 # HalluciNation
-### From Support Ticket to Verified Fix — Automating the Journey from Bug Report to Resolution
+### From Support Ticket to Merged Fix
 
-<p align="center">
-  <strong>An AI-powered multi-agent software debugging and issue-resolution platform.</strong>
-</p>
+**A cozy town of AI agents that investigates, fixes and tests your bugs.**
+**Agents propose. Humans approve.**
 
-<p align="center">
-  <em>Report it. Investigate it. Fix it. Verify it.</em>
-</p>
+<br/>
 
----
+![Hackathon](https://img.shields.io/badge/Switch-Hackathon-8a5cc8?style=for-the-badge)
+![React](https://img.shields.io/badge/React-Vite-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Sandboxed_Tests-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
-## Overview
+<br/>
 
-**HalluciNation** is an AI-powered software support and debugging platform designed to transform traditional bug reporting into an intelligent, structured issue-resolution workflow.
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot3.png" alt="Triage Agent" height="130" />
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot1.png" alt="Investigation Agent" height="130" />
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot4.png" alt="Fix Agent" height="130" />
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot5.png" alt="Testing Agent" height="130" />
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot2.png" alt="Reviewer Agent" height="130" />
 
-Instead of simply collecting bug reports and leaving developers to investigate them manually, HalluciNation aims to connect support tickets with specialized AI agents that investigate issues, identify potential causes, generate fixes, and verify proposed solutions.
+<br/>
 
-The platform brings together multiple components into a unified workflow, helping teams move from an unstructured problem description to an actionable and testable resolution.
+[🎬 Demo video](#-demo) · [✨ Features](#-features) · [🧑‍🤝‍🧑 Meet the team](#-meet-the-agents) · [🚀 Run it](#-run-it-locally) · [📍 Status](#-project-status)
 
-**Our vision:** Make software debugging more transparent, collaborative, and verifiable through AI-powered automation.
-
----
-
-## The Problem
-
-Modern software teams receive bug reports through support tickets, GitHub issues, internal communication platforms, and user feedback.
-
-However, resolving these reports often involves several disconnected activities:
-
-- Understanding incomplete or unclear bug descriptions.
-- Identifying the affected functionality.
-- Locating relevant source code.
-- Investigating possible root causes.
-- Developing and reviewing fixes.
-- Running tests to determine whether a fix actually works.
-- Communicating the resolution back to the support team.
-
-These steps consume engineering time and can create delays between reporting a problem and resolving it.
-
-## Our Solution
-
-HalluciNation introduces an integrated AI-assisted workflow that connects support ticket submission with investigation, patch generation, and verification.
-
-The system is designed around specialized components rather than relying on a single general-purpose chatbot.
-
-### Core capabilities
-
-1. **Intelligent Ticket Submission** — Collect bug descriptions, error logs, repository information, branches, and priority levels.
-2. **Issue Triage** — Organize incoming reports and prepare them for investigation.
-3. **Code Investigation** — Analyze the issue and relevant code to identify possible causes.
-4. **Fix Generation** — Produce suggested code changes for developer review.
-5. **Verification** — Execute supported checks and report whether the proposed fix passes or fails.
-6. **Unified Dashboard** — Present ticket information and investigation results in one interface.
+</div>
 
 ---
 
-## System Architecture
+<div align="center">
+<img src="docs/images/overview.png" alt="Ticket2fix overview" width="780" />
+</div>
+
+---
+
+## 🐞 The problem
+
+Fixing one bug takes a whole relay race of people: someone reads the ticket, someone digs through the code, someone writes the fix, someone tests it, someone reviews it, and someone finally merges it. Every handoff costs time, and the context gets lost along the way.
+
+## 💡 Our idea
+
+**HalluciNation** turns that relay race into a team of specialised AI agents that hand work and evidence to each other, while a **human keeps the final say**.
+
+```
+Report a bug  →  Agents investigate  →  Fix is written  →  Tests run  →  Review  →  You approve  →  GitHub handoff
+```
+
+We didn't just want code that *looks* right. We wanted a workflow you can **watch, test and trust**:
+
+| 🔭 Visible | 🧪 Tested | 🛡️ Controlled |
+|---|---|---|
+| Every agent message and handoff shows up live in an activity feed, with evidence attached. | Fixes run in an isolated Docker sandbox. Output is evidence, not a guess. | Nothing is merged until a person reviews the diff and presses approve. |
+
+---
+
+## 🧑‍🤝‍🧑 Meet the agents
+
+<table align="center">
+<tr>
+<td align="center" width="20%"><img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot3.png" height="120" /><br/><b>Triage Agent</b><br/><sub>Understands the report, finds the affected feature and opens the investigation task.</sub></td>
+<td align="center" width="20%"><img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot1.png" height="120" /><br/><b>Code Investigation Agent</b><br/><sub>Reads the code and logs and points to the likely root cause.</sub></td>
+<td align="center" width="20%"><img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot4.png" height="120" /><br/><b>Fix Agent</b><br/><sub>Writes a patch and explains why it should solve the problem.</sub></td>
+<td align="center" width="20%"><img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot5.png" height="120" /><br/><b>Testing Agent</b><br/><sub>Runs the tests in a Docker sandbox and reports the evidence.</sub></td>
+<td align="center" width="20%"><img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mascot2.png" height="120" /><br/><b>Reviewer Agent</b><br/><sub>Challenges the fix and either approves it or sends it back.</sub></td>
+</tr>
+</table>
+
+---
+
+## 🔄 How it works
 
 ```mermaid
-flowchart TD
-    A[User / Developer] --> B[Support Ticket Frontend]
-    B --> C[FastAPI Backend]
-    C --> D[Ticket Management]
-    D --> E[Triage Agent]
-    E --> F[Code Investigation Agent]
-    F --> G[Fix / Patch Agent]
-    G --> H[Verification Engine]
-    H --> I[Verification Results]
-    I --> J[Frontend Dashboard]
-    J --> K[Developer Review]
+flowchart LR
+    A([🎫 Ticket]) --> B[🐰 Triage]
+    B --> C[🐶 Investigation]
+    C --> D[🐲 Fix]
+    D --> E[🧪 Testing]
+    E --> F[🐱 Review]
+    F -->|all agree| G{🙋 Human approval}
+    F -.->|objection / failing tests| D
+    G -->|approve| H([🔀 Pull request])
+    G -.->|request changes| D
 ```
 
-The architecture separates the user interface, backend orchestration, specialized investigation components, and verification responsibilities.
+A ticket moves through these statuses:
 
-### Agent Responsibilities
+`submitted` → `triage` → `investigating` → `fixing` → `testing` → `review` → `awaiting_approval` → `approved` → `pr_created` → `merged`
 
-| Component | Responsibility |
+If the reviewer objects or the human requests changes, the ticket is `rejected` and goes back to the Fix Agent with the feedback.
+
+---
+
+## ✨ Features
+
+| | |
 |---|---|
-| Triage Agent | Organizes and prepares submitted issues |
-| Code Investigation Agent | Investigates the reported problem and relevant source code |
-| Fix / Patch Agent | Generates proposed code modifications |
-| Verification Engine | Runs supported checks against proposed changes |
-| Backend Coordinator | Connects the ticket workflow and backend services |
+| 🎫 **Easy ticket submission** | Title, description, error logs and up to 3 screenshots. Drag and drop, or paste with Ctrl+V. |
+| 📊 **Live progress stepper** | See exactly which stage each ticket is in. The page refreshes by itself every 2 seconds. |
+| 💬 **Agent activity feed** | A timeline of every message and handoff, with evidence: files, logs and test output. |
+| 🔍 **Code diff viewer** | Added and removed lines highlighted, with +/− counts. |
+| ✅ **Test results panel** | Pass/fail per test, with a tag on newly added regression tests. |
+| 🧑‍⚖️ **Human approval** | Approve and create a PR, or request changes with written feedback. |
+| 🗺️ **Interactive town** | Click a character on the home page to report a bug, watch the agents, review a fix or read the guide. |
+| 📖 **Built-in guide** | Step-by-step help, a status glossary and an FAQ. |
+| 🧸 **Demo mode** | Sample tickets let the whole website run without the backend. |
 
-*The availability of individual agent capabilities depends on the configured integrations and execution environment.*
+### 📸 Screenshots
 
----
-
-## Technology Stack
-
-### Frontend
-- React
-- JavaScript
-- Vite
-- CSS
-
-### Backend
-- Python
-- FastAPI
-- REST API
-- Pydantic
-
-### AI and Agent Integration
-- Specialized agent-based workflow
-- AI-assisted issue analysis
-- Structured investigation and patch generation
-
-### Developer Tools
-- Git and GitHub
-- Visual Studio Code
-- PowerShell
-- Docker
-
-### Integration Layer
-- Modular backend adapters
-- Switch / Mattermost integration interface
-- External agent coordination
+<!-- Save your screenshots in docs/images/ with these names. -->
+<table>
+<tr>
+<td align="center"><img src="docs/images/report-bug.png" width="380" /><br/><sub><b>Report a bug</b></sub></td>
+<td align="center"><img src="docs/images/agent-activity.png" width="380" /><br/><sub><b>Watch the agents work</b></sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/images/approve-fix.png" width="380" /><br/><sub><b>Review the patch and decide</b></sub></td>
+<td align="center"><img src="docs/images/town.png" width="380" /><br/><sub><b>The Ticket2fix town</b></sub></td>
+</tr>
+</table>
 
 ---
 
-## Application Workflow
+## 🎬 Demo
 
-### 1. Submit a Support Ticket
+<!-- Replace with your video link and thumbnail. -->
+> **▶️ Watch the demo:** _add your video link here_
 
-Users submit an issue through the web application.
+**The story we tell in the demo**
 
-Ticket information includes:
-
-- Issue title
-- Issue description
-- Error logs (optional)
-- GitHub repository
-- Branch
-- Priority (Low, Medium, High, Critical)
-
-### 2. Issue Triage
-
-The submitted issue enters the backend workflow, where the triage component prepares the issue for further investigation.
-
-### 3. Code Investigation
-
-The investigation component examines the reported problem and relevant code context to identify potential causes.
-
-### 4. Patch Generation
-
-The patch component prepares a suggested solution that developers can inspect before applying it.
-
-### 5. Verification
-
-The verification component executes supported checks to evaluate whether the proposed solution addresses the identified issue.
-
-### 6. Results Dashboard
-
-The frontend presents available ticket information, investigation findings, suggested fixes, and verification results.
+1. 🐞 A user reports: *"Payment page crashes on invalid coupon."*
+2. 🐰 The Triage Agent identifies the checkout and coupons feature.
+3. 🐶 The Investigation Agent finds that `apply_coupon()` assumes a lookup always returns an object, so an invalid code raises `AttributeError`.
+4. 🐲 The Fix Agent proposes a patch that validates the coupon and raises a friendly `InvalidCouponError`.
+5. 🧪 The Testing Agent runs the suite in Docker and reports the results.
+6. 🐱 The Reviewer Agent checks the fix and the evidence.
+7. 🙋 You review the diff and the tests, then press **Approve & create PR**.
 
 ---
 
-## Project Structure
+## 🛠️ Built with
 
-```text
-HalluciNation/
-│
-├── Ticket2fix_frontend/
-│   └── Ticketwebsitefrontend/
-│       ├── src/
-│       ├── public/
-│       ├── .env.example
-│       └── package.json
-│
-├── person3-backend-integration/
-│   └── person3-backend/
-│       ├── docs/
-│       │   └── switch-integration.md
-│       └── ...
-│
-├── backend/
-│   ├── main.py
-│   ├── ...
-│
-├── .gitignore
-└── README.md
-```
-
-*Update this tree to reflect the final repository structure before publishing.*
+| Layer | Technology |
+|---|---|
+| **Frontend** | React, Vite, React Router, TanStack React Query, Tailwind CSS |
+| **Backend** | Python, FastAPI, SQLite |
+| **Test execution** | Docker (isolated sandbox), Pytest |
+| **Integrations** | GitHub service, Switch / Mattermost adapter |
+| **Art** | Hand-picked mascot illustrations and a themed UI design |
 
 ---
 
-## Getting Started
+## 🚀 Run it locally
 
-### Prerequisites
+<details>
+<summary><b>Prerequisites</b></summary>
 
-Install the following:
+- Node.js 18+ and npm
+- Python 3.10+
+- Docker Desktop (running, for test execution)
+- Git
 
-- Python 3.11 or later (use the version supported by the backend dependencies).
-- Node.js and npm.
-- Git.
-- Docker (if using containerized verification).
+</details>
 
-### 1. Clone the repository
+**1. Clone**
 
 ```bash
 git clone https://github.com/Durreshehwar15/HalluciNation.git
-
 cd HalluciNation
 ```
 
-### 2. Configure the Backend
+**2. Start the backend**
 
-Navigate to the backend directory:
+```bash
+cd person3-backend-integration/person3-backend/backend
 
-```powershell
-cd backend
-```
-
-Create a virtual environment:
-
-```powershell
 python -m venv .venv
-```
+.venv\Scripts\activate          # macOS / Linux: source .venv/bin/activate
 
-Activate it:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Install dependencies:
-
-```powershell
 pip install -r requirements.txt
+cp .env.example .env            # fill in your values
+
+uvicorn app.main:app --reload --port 8000
 ```
 
-Start the backend:
+API: <http://127.0.0.1:8000> · Interactive docs: <http://127.0.0.1:8000/docs>
 
-```powershell
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
+**3. Start the frontend** (in a second terminal)
 
-Backend documentation:
-
-http://localhost:8000/docs
-
-### 3. Configure the Frontend
-
-Open another terminal:
-
-```powershell
+```bash
 cd Ticket2fix_frontend/Ticketwebsitefrontend
-```
 
-Install dependencies:
-
-```powershell
 npm install
-```
-
-Configure the environment:
-
-Create a `.env` file using `.env.example` as the reference.
-
-```env
-VITE_API_URL=http://localhost:8000
-```
-
-Start the development server:
-
-```powershell
+cp .env.example .env            # set VITE_API_URL if the backend isn't on port 8000
 npm run dev
 ```
 
-Open:
+Open <http://localhost:5173> 🎉
 
-http://localhost:5173
+<details>
+<summary><b>Environment variables</b></summary>
 
----
-
-## API Overview
-
-The backend exposes REST endpoints for frontend communication and ticket processing.
-
-| Endpoint | Method | Purpose |
+| Where | Variable | Purpose |
 |---|---|---|
-| `/health` | GET | Backend health check |
-| `/openapi.json` | GET | API schema |
-| `/tickets/{ticket_id}/analyze` | POST | Trigger ticket analysis |
+| Frontend | `VITE_API_URL` | Backend URL (default `http://127.0.0.1:8000`) |
+| Backend | see `backend/.env.example` | GitHub, Docker and Switch settings |
 
-Additional endpoints depend on the integrated backend modules.
+Real `.env` files are never committed. If a secret was ever pushed by accident, rotate it.
 
-Explore the interactive API documentation at `/docs`.
+</details>
 
----
+<details>
+<summary><b>Run the tests</b></summary>
 
-## Verification and Reliability
+```bash
+cd person3-backend-integration/person3-backend
 
-HalluciNation emphasizes the importance of checking proposed fixes rather than treating AI-generated code as automatically correct.
+cd backend && pytest                      # API, demo, Docker and handoff tests
+cd .. && python scripts/validate_local_api.py   # check the running API
+python scripts/demo.py                    # scripted demo of the workflow
+```
 
-The verification workflow is intended to:
-
-- Evaluate proposed code changes.
-- Execute supported tests in an isolated environment.
-- Capture execution results.
-- Distinguish successful checks from failed checks.
-- Present evidence for developer review.
-
-**Important:** A generated patch is not equivalent to a verified fix. A successful test run only demonstrates that the executed checks passed; it does not guarantee that every possible issue has been resolved.
+</details>
 
 ---
 
-## Security Considerations
+## 🗂️ Project structure
 
-The platform is designed with developer workflow safety in mind.
+<details>
+<summary><b>Click to expand</b></summary>
 
-Recommended deployment safeguards include:
+```
+HalluciNation/
+├── Ticket2fix_frontend/Ticketwebsitefrontend/   # React + Vite app
+│   └── src/
+│       ├── api/          client.js, mockTicket.js
+│       ├── components/   AgentFeed, DiffViewer, PipelineStepper, StatusBadge, TestResults, GameBoard
+│       ├── content/      agents.js, assets.js, guide.js
+│       ├── hooks/        useTicket.js
+│       └── pages/        Home, Guide, Dashboard, SubmitTicket, TicketDetail, Approval
+│
+└── person3-backend-integration/person3-backend/
+    ├── backend/app/      main.py, models.py, schemas.py, routes/tickets.py
+    │                     services/ docker_runner.py, github_service.py, switch_adapter.py
+    ├── backend/tests/    test_api, test_demo_script, test_docker_live, test_handoff
+    ├── demo-repo/        small sample app the agents fix in the demo
+    ├── docs/             api-contract.md, integration-guide.md, switch-integration.md
+    └── scripts/          demo.py, validate_local_api.py, validate_live_api.py
+```
 
-- Keep API keys and credentials in environment variables.
-- Never commit `.env` files or private tokens.
-- Isolate untrusted repository code during execution.
-- Apply execution timeouts and resource limits.
-- Review generated patches before applying them.
-- Avoid exposing sensitive logs or source code.
-- Restrict access to repository credentials.
-
----
-
-## Current Limitations
-
-HalluciNation is an evolving project.
-
-The following areas require configuration or further development depending on the deployment:
-
-- Production-grade multi-agent orchestration.
-- Live Switch / Mattermost transport and credentials.
-- Broader programming-language support.
-- More comprehensive automated regression testing.
-- Advanced repository-wide dependency analysis.
-- Production authentication and authorization.
-- Deployment and monitoring infrastructure.
+</details>
 
 ---
 
-## Future Roadmap
+## 🔗 Switch and Mattermost
 
-Our planned improvements include:
-
-- [ ] More advanced root-cause analysis.
-- [ ] Deeper GitHub repository integration.
-- [ ] Improved multi-agent collaboration.
-- [ ] Automated regression-test generation.
-- [ ] More robust isolated code execution.
-- [ ] Patch confidence and evidence reporting.
-- [ ] Switch / Mattermost integration.
-- [ ] Continuous integration and deployment support.
-- [ ] Support for additional programming languages.
+The backend includes a Switch adapter (`services/switch_adapter.py`) that defines how the agents talk to the team-messaging layer. Today it is a **mockable adapter**; live Switch transport and Mattermost channel wiring are the next step. Meanwhile, every agent message appears in the website's activity feed. Details: [`docs/switch-integration.md`](person3-backend-integration/person3-backend/docs/switch-integration.md).
 
 ---
 
-## Why HalluciNation?
+## 📍 Project status
 
-Traditional bug-reporting platforms help teams record problems.
+We believe in showing exactly where we are.
 
-HalluciNation aims
+| Area | Status |
+|---|---|
+| Frontend: all pages, activity feed, diff and test views, approval flow | ✅ Built |
+| Backend: ticket API, database, Docker runner, GitHub service | ✅ Implemented in code |
+| Frontend and backend merged into one repository | ✅ Done |
+| Full ticket-to-fix run through the live backend | 🚧 In progress |
+| Live Switch / Mattermost messaging | 🚧 Adapter ready, connection pending |
+| End-to-end GitHub pull request creation | 🚧 To be verified |
+
+## 🗺️ What's next
+
+- [ ] Complete the live ticket → fix run end to end
+- [ ] Turn on real Switch and Mattermost messaging
+- [ ] Verify the GitHub PR handoff
+- [ ] Support more repositories and languages
+
+---
+
+## 👥 Team
+
+<!-- Replace with your team. Add GitHub links if you like. -->
+| Name | What they built |
+|---|---|
+| **_Your name_** | _Frontend, UI design and mascots_ |
+| **_Teammate_** | _Backend and APIs_ |
+| **_Teammate_** | _Agents and Switch integration_ |
+
+---
+
+<div align="center">
+
+**Made with lots of coffee, a few bugs of our own, and a lot of fun.** 🐾
+
+*Agents propose. Humans approve.*
+
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mas1.png" height="60" />
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mas2.png" height="60" />
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mas3.png" height="60" />
+<img src="Ticket2fix_frontend/Ticketwebsitefrontend/public/images/mas4.png" height="60" />
+
+</div>
