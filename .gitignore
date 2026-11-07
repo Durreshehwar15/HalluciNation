@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+**/.venv/
+**/venv/
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/dist/
+**/build/
+INTEGRATION_BACKUP_*/
+FRONTEND_BACKUP_*/
+*.sqlite3
+*.db
