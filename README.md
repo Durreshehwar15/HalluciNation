@@ -1,4 +1,4 @@
-# HalluciNation
+
 
 # HalluciNation
 ### From Support Ticket to Verified Fix — Automating the Journey from Bug Report to Resolution
