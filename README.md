@@ -26,7 +26,7 @@
 
 <br/>
 
-[🎬 Demo video](#-demo) · [✨ Features](#-features) · [🧑‍🤝‍🧑 Meet the team](#-meet-the-agents) · [🚀 Run it](#-run-it-locally) · [📍 Status](#-project-status)
+[Demo video](#-demo) · [Features](#-features) · [Meet the team](#-meet-the-agents) · [Run it](#-run-it-locally) · [Status](#-project-status)
 
 </div>
 
@@ -38,11 +38,11 @@
 
 ---
 
-## 🐞 The problem
+## The problem
 
 Fixing one bug takes a whole relay race of people: someone reads the ticket, someone digs through the code, someone writes the fix, someone tests it, someone reviews it, and someone finally merges it. Every handoff costs time, and the context gets lost along the way.
 
-## 💡 Our idea
+## Our idea
 
 **HalluciNation** turns that relay race into a team of specialised AI agents that hand work and evidence to each other, while a **human keeps the final say**.
 
@@ -52,13 +52,13 @@ Report a bug  →  Agents investigate  →  Fix is written  →  Tests run  → 
 
 We didn't just want code that *looks* right. We wanted a workflow you can **watch, test and trust**:
 
-| 🔭 Visible | 🧪 Tested | 🛡️ Controlled |
+| Visible | Tested | Controlled |
 |---|---|---|
 | Every agent message and handoff shows up live in an activity feed, with evidence attached. | Fixes run in an isolated Docker sandbox. Output is evidence, not a guess. | Nothing is merged until a person reviews the diff and presses approve. |
 
 ---
 
-## 🧑‍🤝‍🧑 Meet the agents
+## Meet the agents
 
 <table align="center">
 <tr>
@@ -72,18 +72,18 @@ We didn't just want code that *looks* right. We wanted a workflow you can **watc
 
 ---
 
-## 🔄 How it works
+## How it works
 
 ```mermaid
 flowchart LR
-    A([🎫 Ticket]) --> B[🐰 Triage]
-    B --> C[🐶 Investigation]
-    C --> D[🐲 Fix]
-    D --> E[🧪 Testing]
-    E --> F[🐱 Review]
-    F -->|all agree| G{🙋 Human approval}
+    A([Ticket]) --> B[Triage]
+    B --> C[Investigation]
+    C --> D[Fix]
+    D --> E[Testing]
+    E --> F[Review]
+    F -->|all agree| G{Human approval}
     F -.->|objection / failing tests| D
-    G -->|approve| H([🔀 Pull request])
+    G -->|approve| H([Pull request])
     G -.->|request changes| D
 ```
 
@@ -95,21 +95,21 @@ If the reviewer objects or the human requests changes, the ticket is `rejected` 
 
 ---
 
-## ✨ Features
+## Features
 
 | | |
 |---|---|
-| 🎫 **Easy ticket submission** | Title, description, error logs and up to 3 screenshots. Drag and drop, or paste with Ctrl+V. |
-| 📊 **Live progress stepper** | See exactly which stage each ticket is in. The page refreshes by itself every 2 seconds. |
-| 💬 **Agent activity feed** | A timeline of every message and handoff, with evidence: files, logs and test output. |
-| 🔍 **Code diff viewer** | Added and removed lines highlighted, with +/− counts. |
-| ✅ **Test results panel** | Pass/fail per test, with a tag on newly added regression tests. |
-| 🧑‍⚖️ **Human approval** | Approve and create a PR, or request changes with written feedback. |
-| 🗺️ **Interactive town** | Click a character on the home page to report a bug, watch the agents, review a fix or read the guide. |
-| 📖 **Built-in guide** | Step-by-step help, a status glossary and an FAQ. |
-| 🧸 **Demo mode** | Sample tickets let the whole website run without the backend. |
+| **Easy ticket submission** | Title, description, error logs and up to 3 screenshots. Drag and drop, or paste with Ctrl+V. |
+| **Live progress stepper** | See exactly which stage each ticket is in. The page refreshes by itself every 2 seconds. |
+| **Agent activity feed** | A timeline of every message and handoff, with evidence: files, logs and test output. |
+| **Code diff viewer** | Added and removed lines highlighted, with +/− counts. |
+| **Test results panel** | Pass/fail per test, with a tag on newly added regression tests. |
+| **Human approval** | Approve and create a PR, or request changes with written feedback. |
+| **Interactive town** | Click a character on the home page to report a bug, watch the agents, review a fix or read the guide. |
+| **Built-in guide** | Step-by-step help, a status glossary and an FAQ. |
+| **Demo mode** | Sample tickets let the whole website run without the backend. |
 
-### 📸 Screenshots
+### Screenshots
 
 <!-- Save your screenshots in docs/images/ with these names. -->
 <table>
@@ -125,24 +125,24 @@ If the reviewer objects or the human requests changes, the ticket is `rejected` 
 
 ---
 
-## 🎬 Demo
+## Demo
 
 <!-- Replace with your video link and thumbnail. -->
-> **▶️ Watch the demo:** _add your video link here_
+> **Watch the demo:** _add your video link here_
 
 **The story we tell in the demo**
 
-1. 🐞 A user reports: *"Payment page crashes on invalid coupon."*
-2. 🐰 The Triage Agent identifies the checkout and coupons feature.
-3. 🐶 The Investigation Agent finds that `apply_coupon()` assumes a lookup always returns an object, so an invalid code raises `AttributeError`.
-4. 🐲 The Fix Agent proposes a patch that validates the coupon and raises a friendly `InvalidCouponError`.
-5. 🧪 The Testing Agent runs the suite in Docker and reports the results.
-6. 🐱 The Reviewer Agent checks the fix and the evidence.
-7. 🙋 You review the diff and the tests, then press **Approve & create PR**.
+1. A user reports: *"Payment page crashes on invalid coupon."*
+2. The Triage Agent identifies the checkout and coupons feature.
+3. The Investigation Agent finds that `apply_coupon()` assumes a lookup always returns an object, so an invalid code raises `AttributeError`.
+4. The Fix Agent proposes a patch that validates the coupon and raises a friendly `InvalidCouponError`.
+5. The Testing Agent runs the suite in Docker and reports the results.
+6. The Reviewer Agent checks the fix and the evidence.
+7. You review the diff and the tests, then press **Approve & create PR**.
 
 ---
 
-## 🛠️ Built with
+## Built with
 
 | Layer | Technology |
 |---|---|
@@ -154,7 +154,7 @@ If the reviewer objects or the human requests changes, the ticket is `rejected` 
 
 ---
 
-## 🚀 Run it locally
+## Run it locally
 
 <details>
 <summary><b>Prerequisites</b></summary>
@@ -199,7 +199,7 @@ cp .env.example .env            # set VITE_API_URL if the backend isn't on port 
 npm run dev
 ```
 
-Open <http://localhost:5173> 🎉
+Open <http://localhost:5173> 
 
 <details>
 <summary><b>Environment variables</b></summary>
@@ -228,7 +228,7 @@ python scripts/demo.py                    # scripted demo of the workflow
 
 ---
 
-## 🗂️ Project structure
+## Project structure
 
 <details>
 <summary><b>Click to expand</b></summary>
@@ -256,13 +256,13 @@ HalluciNation/
 
 ---
 
-## 🔗 Switch and Mattermost
+## Switch and Mattermost
 
 The backend includes a Switch adapter (`services/switch_adapter.py`) that defines how the agents talk to the team-messaging layer. Today it is a **mockable adapter**; live Switch transport and Mattermost channel wiring are the next step. Meanwhile, every agent message appears in the website's activity feed. Details: [`docs/switch-integration.md`](person3-backend-integration/person3-backend/docs/switch-integration.md).
 
 ---
 
-## 📍 Project status
+## Project status
 
 We believe in showing exactly where we are.
 
@@ -275,7 +275,7 @@ We believe in showing exactly where we are.
 | Live Switch / Mattermost messaging | 🚧 Adapter ready, connection pending |
 | End-to-end GitHub pull request creation | 🚧 To be verified |
 
-## 🗺️ What's next
+## What's next
 
 - [ ] Complete the live ticket → fix run end to end
 - [ ] Turn on real Switch and Mattermost messaging
@@ -289,9 +289,9 @@ We believe in showing exactly where we are.
 <!-- Replace with your team. Add GitHub links if you like. -->
 | Name | What they built |
 |---|---|
-| **_Your name_** | _Frontend, UI design and mascots_ |
-| **_Teammate_** | _Backend and APIs_ |
-| **_Teammate_** | _Agents and Switch integration_ |
+| **Aastha** | _Frontend, UI design and mascots_ |
+| **Yiqi** | _Backend and APIs_ |
+| **Durre** | _Agents and Switch integration_ |
 
 ---
 
