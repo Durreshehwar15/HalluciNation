@@ -32,9 +32,6 @@
 
 ---
 
-<div align="center">
-<img src="docs/images/overview.png" alt="Ticket2fix overview" width="780" />
-</div>
 
 ---
 
