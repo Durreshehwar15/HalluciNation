@@ -180,10 +180,10 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install -r backend/requirements.txt
 
-# build the test sandbox image (Docker must be running)
+build the test sandbox image (Docker must be running)
 docker build -t support-fix-verifier:local demo-repo
 
-# the backend does not read .env by itself; set these in this terminal
+the backend does not read .env by itself; set these in this terminal
 $env:CORS_ORIGINS = "http://localhost:5173"
 $env:HUMAN_APPROVAL_TOKEN = "<a long random string>"
 $env:HUMAN_APPROVER_ID = "hackathon-reviewer"
