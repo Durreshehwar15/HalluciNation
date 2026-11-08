@@ -174,20 +174,26 @@ cd HalluciNation
 ```
 
 **2. Start the backend**
-
-```bash
-cd person3-backend-integration/person3-backend/backend
+cd person3-backend-integration/person3-backend
 
 python -m venv .venv
-.venv\Scripts\activate          # macOS / Linux: source .venv/bin/activate
+.venv\Scripts\activate
+pip install -r backend/requirements.txt
 
-pip install -r requirements.txt
-cp .env.example .env            # fill in your values
+# build the test sandbox image (Docker must be running)
+docker build -t support-fix-verifier:local demo-repo
 
-uvicorn app.main:app --reload --port 8000
-```
+# the backend does not read .env by itself; set these in this terminal
+$env:CORS_ORIGINS = "http://localhost:5173"
+$env:HUMAN_APPROVAL_TOKEN = "<a long random string>"
+$env:HUMAN_APPROVER_ID = "hackathon-reviewer"
+$env:VERIFIER_IMAGE = "support-fix-verifier:local"
+$env:MOCK_PATCH_PATH = "demo-repo/app.py"
+$env:VERIFIER_PROJECT_DIR = "demo-repo"
+$env:DATABASE_URL = "sqlite:///./tickets.db"
+# $env:GITHUB_TOKEN = "<fine-grained token>"   # only for pull request creation
 
-API: <http://127.0.0.1:8000> · Interactive docs: <http://127.0.0.1:8000/docs>
+uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
 
 **3. Start the frontend** (in a second terminal)
 
@@ -258,23 +264,28 @@ HalluciNation/
 
 ## Switch and Mattermost
 
-The backend includes a Switch adapter (`services/switch_adapter.py`) that defines how the agents talk to the team-messaging layer. Today it is a **mockable adapter**; live Switch transport and Mattermost channel wiring are the next step. Meanwhile, every agent message appears in the website's activity feed. Details: [`docs/switch-integration.md`](person3-backend-integration/person3-backend/docs/switch-integration.md).
+Switch is the layer that lets our agents and people work in the same chat room.
 
+1. Installed Switch Console [OS] and Docker.
+2. Connected [Codex / agent name].
+3. Created the room [name] in [Mattermost].
+4. Agents: Triage, Investigation, Fix, Testing, Reviewer. [one line on how each is set up]
+5. Handoffs work by [mentions / task assignment].
+6. Our backend plugs in through `services/switch_adapter.py`: [what it does now].
+
+Setup details: [`docs/switch-integration.md`](person3-backend-integration/person3-backend/docs/switch-integration.md)
 ---
 
 ## Project status
 
-We believe in showing exactly where we are.
-
 | Area | Status |
 |---|---|
-| Frontend: all pages, activity feed, diff and test views, approval flow | ✅ Built |
-| Backend: ticket API, database, Docker runner, GitHub service | ✅ Implemented in code |
-| Frontend and backend merged into one repository | ✅ Done |
-| Full ticket-to-fix run through the live backend | 🚧 In progress |
-| Live Switch / Mattermost messaging | 🚧 Adapter ready, connection pending |
-| End-to-end GitHub pull request creation | 🚧 To be verified |
-
+| Frontend: pages, activity feed, diff and test views, approval flow | ✅ Built |
+| Backend: ticket API, database, Docker runner, GitHub service | ✅ Built |
+| Frontend connected to the live backend | ✅ [confirm] |
+| Full ticket-to-fix run through the live backend | ✅ [confirm, add date] |
+| Switch Console + [agent] + Mattermost room | ✅ [confirm] |
+| Draft pull request creation on GitHub | [✅ tested live on <repo> / 🚧 tested with mocks only] |
 ## What's next
 
 - [ ] Complete the live ticket → fix run end to end
