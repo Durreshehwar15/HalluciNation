@@ -114,12 +114,12 @@ If the reviewer objects or the human requests changes, the ticket is `rejected` 
 <!-- Save your screenshots in docs/images/ with these names. -->
 <table>
 <tr>
-<td align="center"><img src="docs/images/report-bug.png" width="380" /><br/><sub><b>Report a bug</b></sub></td>
-<td align="center"><img src="docs/images/agent-activity.png" width="380" /><br/><sub><b>Watch the agents work</b></sub></td>
+<td align="center"><img src="https://github.com/user-attachments/assets/8cfd0ad1-fcd4-4a52-aef9-a2f118d58801" width="380" /><br/><sub><b>Report a bug</b></sub></td>
+<td align="center"><img src="https://github.com/user-attachments/assets/04bf78b8-ac3f-4d3d-afe7-323f9b141ba6" width="380" /><br/><sub><b>Watch the agents work</b></sub></td>
 </tr>
 <tr>
-<td align="center"><img src="docs/images/approve-fix.png" width="380" /><br/><sub><b>Review the patch and decide</b></sub></td>
-<td align="center"><img src="docs/images/town.png" width="380" /><br/><sub><b>The Ticket2fix town</b></sub></td>
+<td align="center"><img src="https://github.com/user-attachments/assets/5ebbbdd9-8ee6-4659-b536-aa1661322b4a" width="380" /><br/><sub><b>Review the patch and decide</b></sub></td>
+<td align="center"><img src="https://github.com/user-attachments/assets/7d49e823-8c13-4469-b26e-96f33d3bb7c5" width="380" /><br/><sub><b>The Ticket2fix town</b></sub></td>
 </tr>
 </table>
 
@@ -128,7 +128,7 @@ If the reviewer objects or the human requests changes, the ticket is `rejected` 
 ## Demo
 
 
-
+https://github.com/user-attachments/assets/9d762cd3-c3c3-4da4-a35d-aa584a652c0f
 
 
 **The story we tell in the demo**
