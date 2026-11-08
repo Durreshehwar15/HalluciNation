@@ -127,8 +127,9 @@ If the reviewer objects or the human requests changes, the ticket is `rejected` 
 
 ## Demo
 
-<!-- Replace with your video link and thumbnail. -->
-> **Watch the demo:** _add your video link here_
+
+
+
 
 **The story we tell in the demo**
 
