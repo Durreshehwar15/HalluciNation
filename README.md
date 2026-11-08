@@ -142,6 +142,8 @@ https://github.com/user-attachments/assets/9d762cd3-c3c3-4da4-a35d-aa584a652c0f
 7. You review the diff and the tests, then press **Approve & create PR**.
 
 ---
+## Blog
+https://ticket2fix.framer.website/
 
 ## Built with
 
